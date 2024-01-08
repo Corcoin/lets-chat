@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #chat-container {
+            display: flex;
+        }
+
+        #user-list {
+            flex: 1;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        #chat-window {
+            flex: 3;
+            padding: 20px;
+        }
+
+        #message-container {
+            max-height: 400px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        #message-input {
+            width: 70%;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px;
+        }
+    </style>
+    <title>Chat App</title>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="user-list">
+            <h2>Online Users</h2>
+            <ul id="online-users">
+                <!-- Online users will be dynamically added here -->
+            </ul>
+        </div>
+        <div id="chat-window">
+            <div id="message-container">
+                <!-- Chat messages will be dynamically added here -->
+            </div>
+            <input type="text" id="message-input" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var messageInput = document.getElementById("message-input");
+            var messageText = messageInput.value;
+
+            if (messageText.trim() !== "") {
+                var messageContainer = document.getElementById("message-container");
+                var messageElement = document.createElement("div");
+                messageElement.textContent = messageText;
+                messageContainer.appendChild(messageElement);
+
+                // Clear the input field after sending the message
+                messageInput.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
